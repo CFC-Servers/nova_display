@@ -9,10 +9,14 @@ function Scoreboard:hide()
     self.panel = nil
 end
 
-function GM:ScoreboardShow()
+local function scoreboardShow()
     Scoreboard:show()
 end
 
-function GM:ScoreboardHide()
+hook.Add( "ScoreboardShow", "CFC_Scoreboard_ScoreboardShow", scoreboardShow )
+
+local function scoreboardHide()
     Scoreboard:hide()
 end
+
+hook.Add( "ScoreboardHide", "CFC_Scoreboard_ScoreboardHide", scoreboardHide )
