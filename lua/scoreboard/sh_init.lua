@@ -1,6 +1,7 @@
+AddCSLuaFile( "sh_config.lua" )
 AddCSLuaFile( "client/scoreboard.lua" )
 
--- include( "shared_file" )
+include( "sh_config.lua" )
 
 if SERVER then
     -- include( "server_file" )
