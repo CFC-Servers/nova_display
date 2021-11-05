@@ -1,9 +1,9 @@
--- AddCSLuaFile( "client_or_shared_file" )
+AddCSLuaFile( "client/scoreboard.lua" )
 
 -- include( "shared_file" )
 
 if SERVER then
     -- include( "server_file" )
 else
-    -- include( "client_file" )
+    include( "client/scoreboard.lua" )
 end
