@@ -1,12 +1,15 @@
+Scoreboard.hidden = true
+
 function Scoreboard:show()
-    self.panel = vgui.Create( "cfc_scoreboard" )
+    self.hidden = false
+    self.panel:Show()
 end
 
 function Scoreboard:hide()
-    if not self.panel then return end
+    if self.hidden then return end
 
-    self.panel:Remove()
-    self.panel = nil
+    self.hidden = true
+    self.panel:Hide()
 end
 
 local function scoreboardShow()
