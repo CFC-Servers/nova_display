@@ -11,6 +11,8 @@ end
 
 local function scoreboardShow()
     Scoreboard:show()
+
+    return true
 end
 
 hook.Add( "ScoreboardShow", "CFC_Scoreboard_ScoreboardShow", scoreboardShow )
