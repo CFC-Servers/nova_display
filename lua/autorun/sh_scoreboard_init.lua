@@ -1,6 +1,6 @@
 AddCSLuaFile()
 
-Scoreboard = {}
+NovaDisplay = {}
 
-AddCSLuaFile( "scoreboard/sh_init.lua" )
-include( "scoreboard/sh_init.lua" )
+AddCSLuaFile( "novadisplay/sh_init.lua" )
+include( "novadisplay/sh_init.lua" )
