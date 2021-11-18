@@ -1,11 +1,11 @@
-Scoreboard.hidden = true
+NovaDisplay.hidden = true
 
-function Scoreboard:show()
+function NovaDisplay:show()
     self.hidden = false
     self.panel:Show()
 end
 
-function Scoreboard:hide()
+function NovaDisplay:hide()
     if self.hidden then return end
 
     self.hidden = true
@@ -13,7 +13,7 @@ function Scoreboard:hide()
 end
 
 local function scoreboardShow()
-    Scoreboard:show()
+    NovaDisplay:show()
 
     return true
 end
@@ -21,7 +21,7 @@ end
 hook.Add( "ScoreboardShow", "CFC_Scoreboard_ScoreboardShow", scoreboardShow )
 
 local function scoreboardHide()
-    Scoreboard:hide()
+    NovaDisplay:hide()
 end
 
 hook.Add( "ScoreboardHide", "CFC_Scoreboard_ScoreboardHide", scoreboardHide )
