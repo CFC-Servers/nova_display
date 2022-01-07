@@ -1,3 +1,5 @@
+local padding = NovaDisplay.config.padding
+
 local scoreboardPanel = {}
 
 function scoreboardPanel:Init()
@@ -5,6 +7,9 @@ function scoreboardPanel:Init()
 
     self:SetSize( w, h )
     self:Center()
+
+    self:DockPadding( padding, padding, padding, padding )
+    self:SetBackgroundColor( Color( 255, 255, 255, 50 ) )
 
     self:MakePopup()
     self:SetKeyboardInputEnabled( false )
