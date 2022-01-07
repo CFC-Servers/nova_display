@@ -1,6 +1,8 @@
 NovaDisplay.hidden = true
 
 function NovaDisplay:show()
+    if not self.hidden then return end
+
     self.hidden = false
     self.panel:Show()
 end
@@ -18,10 +20,15 @@ local function scoreboardShow()
     return true
 end
 
-hook.Add( "ScoreboardShow", "CFC_Scoreboard_ScoreboardShow", scoreboardShow )
-
 local function scoreboardHide()
     NovaDisplay:hide()
 end
 
-hook.Add( "ScoreboardHide", "CFC_Scoreboard_ScoreboardHide", scoreboardHide )
+local function initializeScoreboard()
+    NovaDisplay.panel = vgui.Create( "NovaDisplay_Scoreboard" )
+
+    hook.Add( "ScoreboardShow", "NovaDisplay_Scoreboard_ScoreboardShow", scoreboardShow )
+    hook.Add( "ScoreboardHide", "NovaDisplay_Scoreboard_ScoreboardHide", scoreboardHide )
+end
+
+hook.Add( "InitPostEntity", "NovaDisplay_Scoreboard_InitScoreboard", initializeScoreboard )
