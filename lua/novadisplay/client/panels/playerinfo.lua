@@ -3,7 +3,7 @@ local colors = NovaDisplay.config.colors
 local playerInfo = {}
 
 surface.CreateFont( "NovaDisplay_userNameFont", {
-    font = "Trebuchet",
+    font = "Omicron Zeta",
     extended = false,
     size = 28,
     weight = 400,
