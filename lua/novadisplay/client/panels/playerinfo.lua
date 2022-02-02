@@ -30,13 +30,26 @@ function playerInfo:Init()
     name:Dock( FILL )
     name:SetContentAlignment( 5 )
     name:SetFont( "NovaDisplay_userNameFont" )
-    name:SetText( LocalPlayer():GetName() )
+    name:SetText( LocalPlayer():Nick() )
     name:SetColor( team.GetColor( LocalPlayer():Team() ) )
     name:SizeToContents()
+
+    local teamContainer = vgui.Create( "DPanel", self )
+    teamContainer:DockMargin( 0, 4, 0, 0 )
+    teamContainer:Dock( TOP )
+    teamContainer:SetBackgroundColor( colors.panelTransparent )
+
+    local teamName = vgui.Create( "DLabel", teamContainer )
+    teamName:Dock( FILL )
+    teamName:SetContentAlignment( 5 )
+    teamName:SetFont( "NovaDisplay_userNameFont" )
+    teamName:SetText( team.GetName( LocalPlayer():Team() ) )
+    teamName:SizeToContents()
 
     self.avatarContainer = avatarContainer
     self.avatar = avatar
     self.nameContainer = nameContainer
+    self.teamContainer = teamContainer
 end
 
 function playerInfo:PerformLayout()
@@ -44,6 +57,8 @@ function playerInfo:PerformLayout()
     self.avatar:Center()
     self.nameContainer:InvalidateLayout( true )
     self.nameContainer:SizeToChildren( false, true )
+    self.teamContainer:InvalidateLayout( true )
+    self.teamContainer:SizeToChildren( false, true )
 end
 
 vgui.Register( "NovaDisplay_PlayerInfo", playerInfo, "NovaDisplay_BasePanel" )
