@@ -25,7 +25,9 @@ local function scoreboardHide()
 end
 
 local function initializeScoreboard()
-    timer.Simple( 0, function()
+    hook.Add( "Think", "NovaDisplay_InitializeScoreboard", function()
+        hook.Remove( "Think", "NovaDisplay_InitializeScoreboard" )
+
         if NovaDisplay.panel then
             NovaDisplay.panel:Remove()
         end
