@@ -9,19 +9,29 @@ if CLIENT then
     include( "client/basepanel.lua" )
 end
 
-local files = file.Find( "novadisplay/client/panels/*.lua", "LUA" )
+local function loadFiles( path, server, client, message )
+    local files = file.Find( path .. "*.lua", "LUA" )
 
-for _, fileName in ipairs( files ) do
-    print( "[NovaDisplay] Loading custom panel: " .. string.sub( fileName, 1, -5 ) )
+    for _, fileName in ipairs( files ) do
+        if message then print( string.format( "[NovaDisplay] " .. message, string.sub( fileName, 1, -5 ) ) ) end
 
-    local filePath = "novadisplay/client/panels/" .. fileName
+        local filePath = path .. fileName
 
-    if SERVER then
-        AddCSLuaFile( filePath )
-    else
-        include( filePath )
+        if client then
+            if SERVER then
+                AddCSLuaFile( filePath )
+            else
+                include( filePath )
+            end
+        end
+
+        if server and SERVER then
+            include( filePath )
+        end
     end
 end
+
+loadFiles( "novadisplay/client/panels/", false, true, "Loading custom panel: %s" )
 
 if SERVER then
     -- include( "server_file" )
