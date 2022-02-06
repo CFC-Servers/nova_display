@@ -2,14 +2,6 @@ local colors = NovaDisplay.config.colors
 
 local playerInfo = {}
 
-surface.CreateFont( "NovaDisplay_userNameFont", {
-    font = "Omicron Zeta",
-    extended = false,
-    size = 28,
-    weight = 400,
-    shadow = false,
-} )
-
 function playerInfo:Init()
     local avatarContainer = vgui.Create( "DPanel", self )
     avatarContainer:SetTall( 128 )
