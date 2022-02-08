@@ -12,6 +12,12 @@ NovaDisplay.config = {
                     name = "PlayerInfo"
                 }
             }
+        },
+        {
+            type = "panel",
+            dock = FILL,
+            w = 0, h = 0,
+            name = "PlayerList"
         }
     },
     colors = {
