@@ -1,4 +1,5 @@
 AddCSLuaFile( "sh_config.lua" )
+AddCSLuaFile( "client/fonts.lua" )
 AddCSLuaFile( "client/basepanel.lua" )
 AddCSLuaFile( "client/novadisplay.lua" )
 AddCSLuaFile( "client/scoreboard.lua" )
@@ -36,6 +37,7 @@ loadFiles( "novadisplay/client/panels/", false, true, "Loading custom panel: %s"
 if SERVER then
     -- include( "server_file" )
 else
+    include( "client/fonts.lua" )
     include( "client/novadisplay.lua" )
     include( "client/scoreboard.lua" )
 end
