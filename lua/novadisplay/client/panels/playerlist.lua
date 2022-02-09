@@ -1,11 +1,12 @@
 local colors = NovaDisplay.config.colors
-local transparent = colors.panelTransparent
+local transparent = colors.transparent
+local pad = NovaDisplay.config.padding
 
 local playerInfoRow = {}
 
 function playerInfoRow:Init()
     self:SetTall( 40 )
-    self:SetBackgroundColor( transparent )
+    self:SetBackgroundColor( colors.bright )
 
     local avatar = vgui.Create( "AvatarImage", self )
     avatar:SetSize( 32, 32 )
@@ -15,9 +16,9 @@ function playerInfoRow:Init()
     local name = vgui.Create( "DLabel", self )
     name:SetTall( 32 )
     name:Dock( LEFT )
-    name:DockMargin( 0, 4, 4, 4 )
-    name:SetContentAlignment( 4 )
-    name:SetFont( "OmicronZeta18" )
+    name:DockMargin( 2, 6, 4, 4 )
+    name:SetContentAlignment( 7 )
+    name:SetFont( "HudHintTextLarge" )
     name:SetText( "Unknown" )
     name:SizeToContents()
 
@@ -37,11 +38,12 @@ vgui.Register( "NovaDisplay_PlayerInfoRow", playerInfoRow, "DPanel" )
 local playerCategory = {}
 
 function playerCategory:Init()
-    self:SetBackgroundColor( transparent )
+    self:SetBackgroundColor( colors.dark )
+    self:DockPadding( pad, pad, pad, pad )
 
     local header = vgui.Create( "DPanel", self )
     header:Dock( TOP )
-    header:DockMargin( 2, 2, 2, 2 )
+    header:DockMargin( pad, pad, pad, pad )
     header:SetTall( 20 )
     header:SetBackgroundColor( transparent )
 
@@ -54,7 +56,6 @@ function playerCategory:Init()
 
     local container = vgui.Create( "DPanel", self )
     container:Dock( TOP )
-    container:DockMargin( 2, 2, 2, 2 )
     container:SetBackgroundColor( transparent )
 
     self:InvalidateLayout( true )
@@ -72,6 +73,7 @@ end
 function playerCategory:AddPlayer( ply )
     local plyRow = vgui.Create( "NovaDisplay_PlayerInfoRow", self.container )
     plyRow:Dock( TOP )
+    plyRow:DockMargin( pad, pad, pad, pad )
     plyRow:SetPlayer( ply )
 
     self.container:InvalidateLayout( true )
@@ -88,6 +90,7 @@ local playerList = {}
 function playerList:Init()
     local scroll = vgui.Create( "DScrollPanel", self )
     scroll:Dock( FILL )
+    scroll:DockPadding( pad, pad, pad, pad )
 
     self.scroll = scroll
 
@@ -104,6 +107,7 @@ end
 function playerList:AddCategory( name )
     local category = self.scroll:Add( "NovaDisplay_PlayerCategory" )
     category:Dock( TOP )
+    category:DockMargin( pad, pad, pad, pad )
     category:SetName( name )
 
     return category

@@ -1,5 +1,6 @@
 local padding = NovaDisplay.config.padding
 local configuration = NovaDisplay.config.defaultConfiguration
+local colors = NovaDisplay.config.colors
 
 local scoreboardPanel = {}
 
@@ -10,7 +11,7 @@ function scoreboardPanel:Init()
     self:Center()
 
     self:DockPadding( padding, padding, padding, padding )
-    self:SetBackgroundColor( Color( 255, 255, 255, 50 ) )
+    self:SetBackgroundColor( colors.background )
 
     self:Configure( configuration )
 
@@ -32,7 +33,7 @@ function scoreboardPanel:Configure( config, parent )
             local panel = vgui.Create( "DPanel", parent )
             panel:SetSize( item.w, item.h )
             panel:Dock( item.dock )
-            panel:SetBackgroundColor( NovaDisplay.config.colors.panelTransparent )
+            panel:SetBackgroundColor( NovaDisplay.config.colors.transparent )
 
             self:Configure( item.contents, panel )
         end

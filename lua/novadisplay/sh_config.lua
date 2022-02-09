@@ -21,8 +21,11 @@ NovaDisplay.config = {
         }
     },
     colors = {
-        panelBackground = Color( 20, 20, 20, 255 ),
-        panelTransparent = Color( 0, 0, 0, 0 )
+        transparent = Color( 0, 0, 0, 0 ),
+        background = Color( 32, 34, 37 ),
+        foreground = Color( 41, 43, 47 ),
+        dark = Color( 47, 49, 54 ),
+        bright = Color( 54, 57, 63 )
     },
     padding = 2
 }

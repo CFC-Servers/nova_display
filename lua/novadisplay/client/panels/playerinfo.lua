@@ -1,4 +1,5 @@
 local colors = NovaDisplay.config.colors
+local transparent = colors.transparent
 
 local playerInfo = {}
 
@@ -7,7 +8,7 @@ function playerInfo:Init()
     avatarContainer:SetTall( 128 )
     avatarContainer:DockMargin( 0, 4, 0, 4 )
     avatarContainer:Dock( TOP )
-    avatarContainer:SetBackgroundColor( colors.panelTransparent )
+    avatarContainer:SetBackgroundColor( transparent )
 
     local avatar = vgui.Create( "AvatarImage", avatarContainer )
     avatar:SetSize( 128, 128 )
@@ -16,7 +17,7 @@ function playerInfo:Init()
     local nameContainer = vgui.Create( "DPanel", self )
     nameContainer:DockMargin( 0, 4, 0, 0 )
     nameContainer:Dock( TOP )
-    nameContainer:SetBackgroundColor( colors.panelTransparent )
+    nameContainer:SetBackgroundColor( transparent )
 
     local name = vgui.Create( "DLabel", nameContainer )
     name:Dock( FILL )
@@ -29,7 +30,7 @@ function playerInfo:Init()
     local teamContainer = vgui.Create( "DPanel", self )
     teamContainer:DockMargin( 0, 4, 0, 0 )
     teamContainer:Dock( TOP )
-    teamContainer:SetBackgroundColor( colors.panelTransparent )
+    teamContainer:SetBackgroundColor( transparent )
 
     local teamName = vgui.Create( "DLabel", teamContainer )
     teamName:Dock( FILL )

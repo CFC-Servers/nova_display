@@ -1,13 +1,13 @@
-local padding = NovaDisplay.config.padding
-local bgColor = NovaDisplay.config.colors.panelBackground
+local pad = NovaDisplay.config.padding
+local foreground = NovaDisplay.config.colors.foreground
 
 local basePanel = {}
 
 function basePanel:Init()
-    self:DockPadding( padding, padding, padding, padding )
-    self:DockMargin( padding, padding, padding, padding )
+    self:DockPadding( pad, pad, pad, pad )
+    self:DockMargin( pad, pad, pad, pad )
 
-    self:SetBackgroundColor( bgColor )
+    self:SetBackgroundColor( foreground )
 end
 
 vgui.Register( "NovaDisplay_BasePanel", basePanel, "DPanel" )
