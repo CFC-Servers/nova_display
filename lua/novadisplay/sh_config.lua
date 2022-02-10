@@ -23,6 +23,13 @@ config.layouts = {
                     dock = TOP,
                     w = 256, h = 256,
                     name = "PlayerInfo"
+                },
+                {
+                    type = "panel",
+                    dock = FILL,
+                    w = 0, h = 0,
+                    name = "ButtonList",
+                    config = {"Discord", "Workshop"}
                 }
             }
         },
@@ -47,3 +54,8 @@ config.colors = {
 -- Note: The actual space will be twice this value as
 -- both panels will actually add this much padding each.
 config.padding = 2
+
+config.links = {
+    discord = "https://cfcservers.org/discord",
+    workshop = "https://steamcommunity.com/sharedfiles/filedetails/?id=1629732176"
+}

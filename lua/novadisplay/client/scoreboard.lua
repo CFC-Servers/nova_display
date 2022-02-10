@@ -31,6 +31,10 @@ function scoreboardPanel:Configure( layout, parent )
             local panel = vgui.Create( "NovaDisplay_" .. item.name, parent )
             panel:SetSize( item.w, item.h )
             panel:Dock( item.dock )
+
+            if panel.Configure then
+                panel:Configure( item.config )
+            end
         elseif item.type == "group" then
             local panel = vgui.Create( "DPanel", parent )
             panel:SetSize( item.w, item.h )

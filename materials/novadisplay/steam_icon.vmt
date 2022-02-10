@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+    "$basetexture" "novadisplay/steam_icon"
+    "$alphatest" "1"
+}
