@@ -25,20 +25,19 @@ local function scoreboardHide()
 end
 
 local function initializeScoreboard()
-    hook.Add( "Think", "NovaDisplay_InitializeScoreboard", function()
-        hook.Remove( "Think", "NovaDisplay_InitializeScoreboard" )
+    if NovaDisplay.panel then
+        NovaDisplay.panel:Remove()
+    end
 
-        if NovaDisplay.panel then
-            NovaDisplay.panel:Remove()
-        end
+    NovaDisplay.panel = vgui.Create( "NovaDisplay_Scoreboard" )
 
-        NovaDisplay.panel = vgui.Create( "NovaDisplay_Scoreboard" )
-
-        hook.Add( "ScoreboardShow", "NovaDisplay_Scoreboard_ScoreboardShow", scoreboardShow )
-        hook.Add( "ScoreboardHide", "NovaDisplay_Scoreboard_ScoreboardHide", scoreboardHide )
-    end )
+    hook.Add( "ScoreboardShow", "NovaDisplay_Scoreboard_ScoreboardShow", scoreboardShow )
+    hook.Add( "ScoreboardHide", "NovaDisplay_Scoreboard_ScoreboardHide", scoreboardHide )
 end
 
-hook.Add( "InitPostEntity", "NovaDisplay_Scoreboard_InitScoreboard", initializeScoreboard )
+hook.Add( "SetupMove", "NovaDisplay_Scoreboard_InitScoreboard", function()
+    hook.Remove( "SetupMove", "NovaDisplay_Scoreboard_InitScoreboard" )
+    initializeScoreboard()
+end )
 
 concommand.Add( "novadisplay_scoreboard_reload", initializeScoreboard, nil, "Reloads the Scoreboard entirely", bit.bor( FCVAR_UNLOGGED, FCVAR_SERVER_CAN_EXECUTE ) )
