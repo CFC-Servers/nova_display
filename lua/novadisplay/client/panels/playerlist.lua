@@ -44,7 +44,7 @@ function playerCategory:Init()
     local header = vgui.Create( "DPanel", self )
     header:Dock( TOP )
     header:DockMargin( pad, pad, pad, pad )
-    header:SetTall( 20 )
+    header:SetTall( 32 )
     header:SetBackgroundColor( transparent )
 
     local name = vgui.Create( "DLabel", header )
