@@ -35,7 +35,14 @@ local function initializeScoreboard()
     hook.Add( "ScoreboardHide", "NovaDisplay_Scoreboard_ScoreboardHide", scoreboardHide )
 end
 
+-- GMod is stupid. This is the fix.
+local setupMoveRunCount = 0
+local setupMoveTriggerCount = 2
+
 hook.Add( "SetupMove", "NovaDisplay_Scoreboard_InitScoreboard", function()
+    setupMoveRunCount = setupMoveRunCount + 1
+    if setupMoveRunCount < setupMoveTriggerCount then return end
+
     hook.Remove( "SetupMove", "NovaDisplay_Scoreboard_InitScoreboard" )
     initializeScoreboard()
 end )
